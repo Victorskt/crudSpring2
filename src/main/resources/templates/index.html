@@ -17,17 +17,18 @@
   </head>
 
   <body>
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- Adicionar -->
+    <div class="modal fade" id="ModalAdicionar" tabindex="-1" aria-labelledby="AdicinonarModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Mensagem</h5>
+            <h5 class="modal-title" id="AdicinonarModalLabel">Adicionar Professor</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <form th:action="@{/student/update/{id} (id=${student.id})}"th:object="${student}"method="post">
+          <form th:action="@{/professor/save}"th:object="${professor}"method="post">
             <div class="modal-body">
               <div class="mb-3">
-                <label for="recipient-name" class="col-form-label">Name:</label>
+                <label for="recipient-name" class="col-form-label">Nome:</label>
                 <input type="text" class="form-control" id="*{name}" name="name">
               </div>
               <div class="mb-3">
@@ -41,13 +42,65 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fecha</button>
-              <button type="submit" class="btn btn-primary" th:href="@{/student/update/{id} (id=${student.id})}">Confirmaçao</button>
+              <button type="submit" class="btn btn-primary">Cadastrar</button>
             </div>
           </form>
         </div>
       </div>
     </div>
-    <nav
+
+ <!-- Cadastrar -->
+    <div class="modal fade" id="ModalCadastrar" tabindex="-1" aria-labelledby="CadastrarModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="CadastrarModalLabel">Cadastrar Professor</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <form th:action="@{/professor/save}"th:object="${professor}"method="post">
+            <div class="modal-body">
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Nome:</label>
+                <input type="text" class="form-control" id="*{name}" name="name">
+              </div>
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Email:</label>
+                <input type="text" class="form-control" id="*{email}" name="email">
+              </div>
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Senha:</label>
+                <input type="text" class="form-control" id="*{password}" name="password">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fecha</button>
+              <button type="submit" class="btn btn-primary">Cadastrar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+   <!-- Excluir -->
+    <div class="modal fade" id="ModalExcluir" tabindex="-1" aria-labelledby="ExcluirModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="AdicinonarModalLabel">Exlcuir Professor</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Certeza que deseja excluir usuario
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fecha</button>
+            <button type="submit" class="btn btn-danger">Excluir</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+   <nav
       class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-sm-around"
     >
       <h1 class="navbar-brand">Gestão de Alunos</h1>

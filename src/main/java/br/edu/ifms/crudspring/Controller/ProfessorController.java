@@ -33,36 +33,36 @@ public class ProfessorController {
     @GetMapping("/")
     public String locAll(Model model){
         List<Professor> professores = professorService.getProfessores();
-        model.addAttribute("professor", professores);
-        return "index";
-}
+        model.addAttribute("professores", professores);
+        return "index-professor";
+    }
 
-@GetMapping("/cadastrar")
-public String newProfessor(Model model) {
-    model.addAttribute("professor", new Professor());
-    return "cadastrar";
-}
+    @GetMapping("/professor-cadastrar")
+    public String newProfessor(Model model) {
+        model.addAttribute("professor", new Professor());
+        return "professor-cadastrar";
+    }
 
-@GetMapping("/remove/{id}")
-public String removeProfessor(@PathVariable("id") UUID id){
-   professorService.delete(id);
-    return "redirect:/professor/";
-}
+    @GetMapping("/remove/{id}")
+    public String removeProfessor(@PathVariable("id") UUID id){
+    professorService.delete(id);
+        return "redirect:/professor/";
+    }
 
-@GetMapping("/edit/{id}")
-public String editProfessor(@PathVariable("id") UUID id, Model model){
+    @GetMapping("/edit/{id}")
+    public String editProfessor(@PathVariable("id") UUID id, Model model){
 
-   Professor professor = professorService.findById(id);
-    model.addAttribute("professor", professor);
+    Professor professor = professorService.findById(id);
+        model.addAttribute("professor", professor);
 
-    return "edit-professor";
-}
+        return "edit-professor";
+    }
 
-@PostMapping("/update/{id}")
-public String updateProfessor(@PathVariable("id") UUID id, @ModelAttribute Professor professor, Model model){
+    @PostMapping("/update/{id}")
+    public String updateProfessor(@PathVariable("id") UUID id, @ModelAttribute Professor professor, Model model){
 
-  professorService.updateStudent(professor);
-    return "redirect:/professor/";
-}
+    professorService.updateStudent(professor);
+        return "redirect:/professor/";
+    }
 
 }

@@ -24,7 +24,7 @@ public class StudentController {
     @Autowired
     StudentService studentService;
 
-    @PostMapping("/")
+    @PostMapping("/save")
     public String save(@ModelAttribute("student") Student student){
         studentService.save(student);
         return "redirect:/student/";

@@ -25,7 +25,7 @@
             <h5 class="modal-title" id="AdicinonarModalLabel">Adicionar Professor</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <form th:action="@{/professor/save}"th:object="${professor}"method="post">
+          <form th:action="@{/student/save}"th:object="${student}"method="post">
             <div class="modal-body">
               <div class="mb-3">
                 <label for="recipient-name" class="col-form-label">Nome:</label>
@@ -41,7 +41,7 @@
               </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fecha</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
               <button type="submit" class="btn btn-primary">Cadastrar</button>
             </div>
           </form>
@@ -54,10 +54,10 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="CadastrarModalLabel">Cadastrar Professor</h5>
+            <h5 class="modal-title" id="CadastrarModalLabel">Cadastrar Aluno</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <form th:action="@{/professor/save}"th:object="${professor}"method="post">
+          <form th:action="@{/student/save}"th:object="${student}"method="post">
             <div class="modal-body">
               <div class="mb-3">
                 <label for="recipient-name" class="col-form-label">Nome:</label>
@@ -73,7 +73,7 @@
               </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fecha</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
               <button type="submit" class="btn btn-primary">Cadastrar</button>
             </div>
           </form>
@@ -86,21 +86,21 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="AdicinonarModalLabel">Exlcuir Professor</h5>
+            <h5 class="modal-title" id="AdicinonarModalLabel">Exlcuir Aluno</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
             Certeza que deseja excluir usuario
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fecha</button>
-            <button type="submit" class="btn btn-danger">Excluir</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+            <a type="submit" class="btn btn-danger" id = "modalButtonDelete">Excluir</a>
           </div>
         </div>
       </div>
     </div>
 
-   <nav
+    <nav
       class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-sm-around"
     >
       <h1 class="navbar-brand">Gestão de Alunos</h1>
@@ -132,14 +132,14 @@
               </tr>
             </thead>
             <tbody>
-              <tr th:each="student: ${students}">
+              <tr th:each="students: ${students}">
                 <th th:text="${student.id}" scope="row"></th>
                 <th th:text="${student.name}" scope="row"></th>
                 <th th:text="${student.email}" scope="row"></th>
                 <th th:text="${student.password}" scope="row"></th>
                 <th>
                 <a class="btn btn-primary" th:href="@{/student/edit/{id} (id=${student.id})}" data-bs-toggle="modal" data-bs-target="#ModalEditar">Editar</a>
-                <a class="btn btn-danger" th:href="@{/student/remove/{id} (id=${student.id})}" data-bs-toggle="modal" data-bs-target="#ModalExcluir">Excluir</a>
+                <a class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#ModalExcluir" th:attr="onclick=|deleteProfessor('${student.id}')|">Excluir</a>
                 </th>
               </tr>
             </tbody>
@@ -150,10 +150,12 @@
     </main>
     <footer class="bg-dark text-center text-lg-start">
       <div class="text-center p-3">
-        <p>©Desenvolvido por Aluno</p>
+        <p>©Desenvolvido pelo Aluno</p>
       </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/8c436b5a19.js"crossorigin="anonymous"></script>
+    <script th:src="@{/js/excluir.js}">
+    </script>
   </body>
 </html>

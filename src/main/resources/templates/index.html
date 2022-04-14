@@ -17,8 +17,6 @@
   </head>
 
   <body>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Editar</button>
-
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -26,10 +24,8 @@
             <h5 class="modal-title" id="exampleModalLabel">Mensagem</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body">
-            <form th:action="@{/student/update/{id} (id=${student.id})}"
-            th:object="${student}"
-            method="post">
+          <form th:action="@{/student/update/{id} (id=${student.id})}"th:object="${student}"method="post">
+            <div class="modal-body">
               <div class="mb-3">
                 <label for="recipient-name" class="col-form-label">Name:</label>
                 <input type="text" class="form-control" id="*{name}" name="name">
@@ -42,12 +38,12 @@
                 <label for="recipient-name" class="col-form-label">Senha:</label>
                 <input type="text" class="form-control" id="*{password}" name="password">
               </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fecha</button>
-                <button type="submit" class="btn btn-primary" th:href="@{/student/update/{id} (id=${student.id})}">Confirmaçao</button>
-              </div>
-            </form>
-          </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fecha</button>
+              <button type="submit" class="btn btn-primary" th:href="@{/student/update/{id} (id=${student.id})}">Confirmaçao</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
@@ -64,7 +60,7 @@
 
         <div class="row">
           <div class="mt-2 mb-2">
-            <a th:href="@{/student/cadastrar}" class="btn btn-success">
+            <a th:href="@{/student/cadastrar}" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#ModalAdicionar">
               <i class="fas fa-user-plus"></i>
               Adicionar Aluno
             </a>
@@ -89,25 +85,13 @@
                 <th th:text="${student.email}" scope="row"></th>
                 <th th:text="${student.password}" scope="row"></th>
                 <th>
-                  <a
-                    class="btn btn-primary"
-                    th:href="@{/student/edit/{id} (id=${student.id})}"
-                  >
-                    Editar
-                  </a>
-                  <a
-                    class="btn btn-danger"
-                    th:href="@{/student/remove/{id} (id=${student.id})}"
-                  >
-                    Excluir
-                  </a>
+                <a class="btn btn-primary" th:href="@{/student/edit/{id} (id=${student.id})}" data-bs-toggle="modal" data-bs-target="#ModalEditar">Editar</a>
+                <a class="btn btn-danger" th:href="@{/student/remove/{id} (id=${student.id})}" data-bs-toggle="modal" data-bs-target="#ModalExcluir">Excluir</a>
                 </th>
               </tr>
             </tbody>
           </table>
-          <p class="no-results" th:if="${students.isEmpty}">
-            Nenhum resultado encontrado
-          </p>
+          <p class="no-results" th:if="${students.isEmpty}">Nenhum resultado encontrado</p>
         </div>
       </div>
     </main>
@@ -116,14 +100,7 @@
         <p>©Desenvolvido por Aluno</p>
       </div>
     </footer>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://kit.fontawesome.com/8c436b5a19.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/8c436b5a19.js"crossorigin="anonymous"></script>
   </body>
 </html>

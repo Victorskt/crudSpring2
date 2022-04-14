@@ -14,15 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.edu.ifms.crudspring.model.Student;
 import br.edu.ifms.crudspring.services.StudentService;
-import lombok.extern.slf4j.Slf4j;
-
-
 
 
 
 @Controller
 @RequestMapping("/student")
-@Slf4j
 public class StudentController {
    
     @Autowired
@@ -49,7 +45,6 @@ public String newStudent(Model model) {
 
 @GetMapping("/remove/{id}")
 public String removeStudent(@PathVariable("id") UUID id){
-    log.info("id =" + id);
    studentService.delete(id);
     return "redirect:/student/";
 }

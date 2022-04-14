@@ -14,17 +14,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.edu.ifms.crudspring.model.Professor;
 import br.edu.ifms.crudspring.services.ProfessorService;
-import lombok.extern.slf4j.Slf4j;
+
 
 @Controller
 @RequestMapping("/professor")
-@Slf4j
+
 public class ProfessorController {
    
     @Autowired
     ProfessorService professorService;
 
-    @PostMapping("/")
+    @PostMapping("/save")
     public String save(@ModelAttribute("professor") Professor professor){
         professorService.save(professor);
         return "redirect:/professor/";
@@ -45,7 +45,6 @@ public String newProfessor(Model model) {
 
 @GetMapping("/remove/{id}")
 public String removeProfessor(@PathVariable("id") UUID id){
-    log.info("id =" + id);
    professorService.delete(id);
     return "redirect:/professor/";
 }

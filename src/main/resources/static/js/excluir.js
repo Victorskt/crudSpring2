@@ -5,3 +5,11 @@ function deleteProfessor(id) {
 
 
 }
+
+function deleteStudent (id) {
+
+    var btnDelete = document.getElementById("modalButtonDelete");
+    btnDelete.setAttribute ("href", "/student/remove/" + id);
+
+
+}
